@@ -1,33 +1,28 @@
-/*
-SQLyog Ultimate v8.62 
-MySQL - 5.5.16-log : Database - pixies
-*********************************************************************
-*/
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               5.5.27-log - MySQL Community Server (GPL)
+-- Server OS:                    Win32
+-- HeidiSQL version:             7.0.0.4053
+-- Date/time:                    2013-04-23 12:43:17
+-- --------------------------------------------------------
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
+/*!40014 SET FOREIGN_KEY_CHECKS=0 */;
 
-/*!40101 SET SQL_MODE=''*/;
-
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-/*Table structure for table `fairies` */
-
-DROP TABLE IF EXISTS `fairies`;
-
-CREATE TABLE `fairies` (
+-- Dumping structure for table pixies.fairies
+CREATE TABLE IF NOT EXISTS `fairies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
-  `bio` varchar(255) DEFAULT NULL,
+  `interests` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) DEFAULT CHARSET=utf8;
 
-/*Data for the table `fairies` */
-
-insert  into `fairies`(`id`,`name`,`bio`) values (1,'Tinkerbell','Likes eating fruits'),(2,'Trixie','Enjoys flying');
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+-- Dumping data for table pixies.fairies: ~4 rows (approximately)
+/*!40000 ALTER TABLE `fairies` DISABLE KEYS */;
+INSERT INTO `fairies` (`id`, `name`, `interests`) VALUES
+	(1, 'Tinkerbell', 'Protects trees, helps little critters and really enjoys singing.'),
+	(2, 'Trixie', 'Likes flying around all day and playing with other fairies. During summer she looks after flowers.');
+/*!40000 ALTER TABLE `fairies` ENABLE KEYS */;
+/*!40014 SET FOREIGN_KEY_CHECKS=1 */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

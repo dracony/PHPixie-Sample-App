@@ -14,3 +14,4 @@
 		<?php endforeach;?>
 	</tbody>
 </table>
+<a href="/fairies/add" class="btn btn-success">Add a new fairy</a>
