@@ -51,4 +51,24 @@ class Fairies extends \App\Page {
 		$this->view->subview = 'add';
 	}
 	
+	public function action_delete() {
+		
+		// Get id of a fairy to delete
+		$id = $this->request->param('id');
+		
+		// Load a fairy
+		$fairy = $this->pixie->orm()->get('fairy', $id);
+		
+		// If a fairy is not loaded for whatever reason - redirect to the list
+		if (!$fairy->loaded()) {
+			return $this->redirect('/');
+		}
+		
+		// Delete a fairy
+		$fairy->delete();
+		
+		// Redirect back to the list
+		$this->redirect('/');
+	}
+	
 }
