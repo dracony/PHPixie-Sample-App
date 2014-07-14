@@ -57,7 +57,7 @@ class Fairies extends \App\Page {
 		$id = $this->request->param('id');
 		
 		// Load a fairy
-		$fairy = $this->pixie->orm()->get('fairy', $id);
+		$fairy = $this->pixie->orm->get('fairy', $id);
 		
 		// If a fairy is not loaded for whatever reason - redirect to the list
 		if (!$fairy->loaded()) {
