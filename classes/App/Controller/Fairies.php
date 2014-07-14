@@ -71,4 +71,49 @@ class Fairies extends \App\Page {
 		$this->redirect('/');
 	}
 	
+	public function action_edit() {
+		
+		$id = $this->request->param('id');
+		$fairy = $this->pixie->orm->get('fairy', $id);
+
+		if (!$fairy->loaded())
+		{
+			return $this->redirect($this->pixie->router->get('default')->url());
+		}
+
+		//If the HTTP method is 'POST'
+		//it means that the form got submitted
+		//and we should process it
+		if ($this->request->method == 'POST')
+		{
+
+			//Set her name from the form POST data
+			$fairy->name = $this->request->post('name');
+
+			//Set her interests from the form POST data
+			$fairy->interests = $this->request->post('interests');
+
+			$validator = $this->pixie->validate->get($this->request->post());
+
+			$validator->field('name')->rule('filled')->error('Name has to be filled');
+
+			if ($validator->valid())
+			{
+				//Save her
+				$fairy->save();
+
+				//And redirect the user back to the list
+				return $this->redirect('/');
+			}
+
+			$this->view->errors = $validator->errors();
+
+		}
+
+		$this->view->fairy = $fairy;
+
+		//Show the form
+		$this->view->subview = 'edit';
+	}
+
 }
